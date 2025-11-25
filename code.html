@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Motivation Room</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0e6ff 0%, #e6f7ff 50%, #fff0f5 100%);
+            color: #4a4a4a;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 20px 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #6b5b95;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #6b5b95;
+            margin-bottom: 1rem;
+        }
+        .self-talk ul {
+            list-style: none;
+            padding: 0;
+        }
+        .self-talk li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: #f9f9f9;
+            border-left: 4px solid #a8e6cf;
+            border-radius: 5px;
+        }
+        button {
+            background: linear-gradient(135deg, #a8e6cf, #dcedc8);
+            color: #4a4a4a;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        #quote-display {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #6b5b95;
+            min-height: 2rem;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 1rem;
+            }
+            button {
+                width: 100%;
+            }
+        }
+        body { font-family: 'Poppins', sans-serif; }
+        button { transition: 0.3s; }
+        button:hover { transform: scale(1.05); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        #selfTalkText { transition: opacity 0.4s; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Motivation Room</h1>
+    </header>
+    <div class="container">
+        <section class="self-talk">
+            <h2>Daily Self-Talk</h2>
+            <ul>
+                <li>I am capable of achieving my dreams.</li>
+                <li>Every day is a new opportunity to grow.</li>
+                <li>I choose positivity and gratitude.</li>
+                <li>My potential is limitless.</li>
+                <li>I am worthy of love and success.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Get Inspired</h2>
+            <button id="motivation-btn">Give me motivation</button>
+            <div id="selfTalkText"></div>
+        </section>
+        <section>
+            <h2>My Own Thoughts</h2>
+            <textarea placeholder="Write your thoughts here..."></textarea>
+        </section>
+        <section class="mood">
+            <h2>How are you feeling today? 😊</h2>
+            <select id="moodSelect">
+                <option>😊 Happy</option>
+                <option>😔 Sad</option>
+                <option>😟 Worried</option>
+                <option>😤 Angry</option>
+                <option>💪 Strong</option>
+            </select>
+        </section>
+    </div>
+    <script>
+        const quotes = [
+            "The only way to do great work is to love what you do. – Steve Jobs",
+            "Believe you can and you're halfway there. – Theodore Roosevelt",
+            "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
+            "You miss 100% of the shots you don't take. – Wayne Gretzky",
+            "The best way to predict the future is to create it. – Peter Drucker",
+            "Don't watch the clock; do what it does. Keep going. – Sam Levenson",
+            "Your time is limited, so don't waste it living someone else's life. – Steve Jobs",
+            "The only limit to our realization of tomorrow will be our doubts of today. – Franklin D. Roosevelt",
+            "Keep your face always toward the sunshine—and shadows will fall behind you. – Walt Whitman",
+            "You are never too old to set another goal or to dream a new dream. – C.S. Lewis"
+        ];
+
+        const button = document.getElementById('motivation-btn');
+        const quoteDisplay = document.getElementById('selfTalkText');
+
+        button.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            quoteDisplay.textContent = quotes[randomIndex];
+        });
+
+        function newMotivation() {
+            const element = document.getElementById("selfTalkText");
+            element.style.opacity = 0;
+            setTimeout(() => {
+                const random = Math.floor(Math.random() * quotes.length);
+                element.innerText = quotes[random];
+                element.style.opacity = 1;
+            }, 400);
+        }
+    </script>
+</body>
+</html>
